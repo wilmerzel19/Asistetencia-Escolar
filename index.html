@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Asistencia</title>
+    <link rel="website icon" type="png" href="img/logo1.png">
+
+</head>
+<body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="" class="sign-in-form">
+            <img src="img/logo1.png" alt="" width="80px">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" id="signin-username" placeholder="Username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="signin-password" placeholder="Password" />
+            </div>
+            <input type="button" value="Login" class="btn solid" onclick="login()" />
+            <p class="social-text">Registrate en Asistencia Escolar</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Sign up</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" id="signup-username" placeholder="Username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="signup-email" placeholder="Email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="signup-password" placeholder="Password" />
+            </div>
+            <input type="submit" class="btn" value="Sign up" onclick="register()" />
+            <p class="social-text">Registrate Asistencia Escolar/p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <img src="img/logo1.png" alt="" width="150px">
+            <h5 class="title">Centro Escolar Yelba Maria Antunes</h5>
+
+            <button class="btn transparent" id="sign-up-btn">
+              Sign up
+            </button>
+          </div>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <img src="img/logo1.png" alt="" width="150px">
+            <button class="btn transparent" id="sign-in-btn">
+              Sign in
+            </button>
+          </div>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+      function register() {
+        const username = document.getElementById('signup-username').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+    
+        // Check if user already exists in local storage
+        if (localStorage.getItem(username)) {
+          alert('Username already exists. Please choose a different username.');
+          return;
+        }
+    
+        // Create user object
+        const user = {
+          username,
+          email,
+          password
+        };
+    
+        // Store user object in local storage
+        localStorage.setItem(username, JSON.stringify(user));
+    
+        alert('Registration successful. You can now sign in.');
+    
+        // Redirect to 'home.html' after successful registration
+        window.location.href = 'home.html';
+      }
+    
+      function login() {
+        const username = document.getElementById('signin-username').value;
+        const password = document.getElementById('signin-password').value;
+    
+        // Retrieve user object from local storage
+        const user = JSON.parse(localStorage.getItem(username));
+    
+        // Check if user exists and password matches
+        if (user && user.password === password) {
+          alert('Login successful. Welcome, ' + user.username + '!');
+    
+          // Redirect to 'home.html' after successful login
+          window.location.href = 'home.html';
+    
+          // Exit the function to prevent further code execution
+          return;
+        } else {
+          alert('Invalid username or password.');
+        }
+    
+        // Reload the page after unsuccessful login attempt
+        window.location.reload();
+      }
+    </script>
+    
+    </body>
+</html>
