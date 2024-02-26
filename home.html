@@ -1,591 +1,655 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en"> <!--<![endif]-->
-
+<html lang="en">
 <head>
-    <!-- Le Basic Page Needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>
-
-        Asistencia &middot; Escolar
-
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-
-    <script type="text/javascript">
-        var host = "bootadmin.org";
-        if ((host == window.location.host) && (window.location.protocol != "https:"))
-            window.location.protocol = "https";
-    </script>
-
-    <!-- Le Meta Data -->
-    <meta content="Bootadmin" property="og:site_name">
-    <meta content="Bootadmin" property="og:title">
-    <meta content="website" property="og:type">
-    <meta content="Bootadmin is an open source bootstrap admin panel." property="og:description">
-    <meta name="keywords" content="bootstrap, admin, theme, panel, administration, material">
-
-
-    <meta content="img/logo1.png" property="og:image">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@iamshipon1988">
-    <meta name="twitter:creator" content="@iamshipon1988">
-
-    <meta name="twitter:title" content="Bootadmin">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
-
-
-
-    <meta name="twitter:description" content="An opensource bootstrap admin panel.">
-
-
-
-    <!-- Le App Banner Data -->
-    <meta name="apple-itunes-app" content="app-id=1245521413">
-    <!--<meta name="apple-itunes-app" content="app-id=1245521413, affiliate-data=myAffiliateData, app-argument=myURL">-->
-
-    <!-- Le Mobile Specific Metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Le CSS
-    ================================================== -->
-    <link rel="stylesheet" href="https://bootadmin.org/style/vendor/library.min.css">
-    <link rel="stylesheet" href="https://bootadmin.org/style/vendor/jqueryui-flat/jquery-ui.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-
-    <link rel="stylesheet" href="https://bootadmin.org/style/core/style.min.css">
-
-    <!-- Le IE Conditionals
-    ================================================== -->
-    <!--[if lt IE 9]>
-	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le Javascript Pre-loads
-    ================================================== -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Le Page Specific Codes
-    ================================================== -->
-
-
-    <!-- Le Favicons
-	================================================== -->
-    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="images/favicon/site.webmanifest">
-    <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="images/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#2d89ef">
-    <meta name="msapplication-config" content="images/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <title>Panel-A.E</title>
 </head>
-
-<body id="landing" class="sidebar-open">
-    <div class="loading">
-        <div class="loading-center"><img src="https://bootadmin.org/images/loading/map.gif" alt="Loading" /></div>
-    </div>
-    <div class="page-container animsition">
-        <div id="dashboardPage">
+<body>
 
 
-            <!-- Main Menu -->
-            <div class="topbar">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-5 hidden-xs">
-                            <div class="logo">
-                                <a href="/">
-                                    <span class="logo-emblem"><img src="img/logo1.png" alt="BA" /></span>
-                                    <span class="logo-full">Asistencia</span>
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+    <!-- Vertical Navbar -->
+    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+        <div class="container-fluid">
+            <!-- Toggler -->
+            <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Brand -->
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+                <h5 class=""> Asistencia-Escolar</h5>
+                <img src="img/logo1.png" alt="...">
+            </a>
+            <!-- User menu (mobile) -->
+            <div class="navbar-user d-lg-none">
+                 
+
+
+                <!-- Dropdown -->
+                <div class="dropdown">
+                    <!-- Toggle -->
+                    <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar-parent-child">
+                            <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar- rounded-circle">
+                            <span class="avatar-child avatar-badge bg-success"></span>
+                        </div>
+                    </a>
+                    <!-- Menu -->
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="#" class="dropdown-item">Billing</a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidebarCollapse">
+                <!-- Navigation -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-house"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-bar-chart"></i> Analitycs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-chat"></i> Messages
+                            <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">6</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-bookmarks"></i> Collections
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-people"></i> Users
+                        </a>
+                    </li>
+                </ul>
+                <!-- Divider -->
+                <hr class="navbar-divider my-5 opacity-20">
+                <!-- Navigation -->
+                <ul class="navbar-nav mb-md-4">
+                    <li>
+                        <div class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide" href="#">
+                            Contacts
+                            <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">13</span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link d-flex align-items-center">
+                            <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar rounded-circle">
+                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="d-block text-sm font-semibold">
+                                    Marie Claire
+                                </span>
+                                <span class="d-block text-xs text-muted font-regular">
+                                    Paris, FR
+                                </span>
+                            </div>
+                            <div class="ms-auto">
+                                <i class="bi bi-chat"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link d-flex align-items-center">
+                            <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <span class="avatar bg-soft-warning text-warning rounded-circle">JW</span>
+                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="d-block text-sm font-semibold">
+                                    Michael Jordan
+                                </span>
+                                <span class="d-block text-xs text-muted font-regular">
+                                    Bucharest, RO
+                                </span>
+                            </div>
+                            <div class="ms-auto">
+                                <i class="bi bi-chat"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link d-flex align-items-center">
+                            <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <img alt="..." src="https://images.unsplash.com/photo-1610899922902-c471ae684eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar rounded-circle">
+                                    <span class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="d-block text-sm font-semibold">
+                                    Heather Wright
+                                </span>
+                                <span class="d-block text-xs text-muted font-regular">
+                                    London, UK
+                                </span>
+                            </div>
+                            <div class="ms-auto">
+                                <i class="bi bi-chat"></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Push content down -->
+                <div class="mt-auto"></div>
+                <!-- User (md) -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-person-square"></i> Account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-box-arrow-left"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+        <!-- Header -->
+        <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+                            <h1 class="h2 mb-0 ls-tight">Application</h1>
+                        </div>
+                        <!-- Actions -->
+                        <div class="col-sm-6 col-12 text-sm-end">
+                            <div class="mx-n1">
+                                <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                                    <span class=" pe-2">
+                                        <i class="bi bi-pencil"></i>
+                                    </span>
+                                    <span>Edit</span>
+                                </a>
+                                <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                                    <span class=" pe-2">
+                                        <i class="bi bi-plus"></i>
+                                    </span>
+                                    <span>Create</span>
                                 </a>
                             </div>
-                            <a href="#" class="menu-toggle wave-effect">
-                                <i class="feather icon-menu"></i>
-                            </a>
                         </div>
-                        <div class="col-md-7 text-right">
-                            <ul>
-                                <!-- Profile Menu -->
-                                <li class="btn-group user-account">
-                                    <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <div class="user-content">
-                                            <div class="user-name"></div>
-                                            <div class="user-plan">Yelba Maria Antunez</div>
-                                        </div>
-                                        <div class="avatar">
-                                            <img src="  img/logo1.png" alt="profile" />
-                                        </div>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="/account/profile"
-                                                class="animsition-link dropdown-item wave-effect"><i
-                                                    class="feather icon-user"></i> Profile</a></li>
-                                        <li><a href="/account/billing"
-                                                class="animsition-link dropdown-item wave-effect"><i
-                                                    class="feather icon-dollar-sign"></i> Billing</a></li>
-                                        <li><a href="/account/settings"
-                                                class="animsition-link dropdown-item wave-effect"><i
-                                                    class="feather icon-settings"></i> Settings</a></li>
-                                        <li><a href="/" class="animsition-link dropdown-item wave-effect"><i
-                                                    class="feather icon-log-in"></i> Logout</a></li>
-                                    </ul>
-                                </li>
-                                <!-- Offcanvas Menu -->
-                                <li>
-                                    <a href="#" class="btn wave-effect offcanvas-toggle"><i
-                                            class="feather icon-settings"></i></a>
-                                </li>
-                                 <!-- Offcanvas Menu -->
-              
-                  <!-- Notification Menu -->
-                  <li class="btn-group notification">
-                    <a href="javascript:;" class="btn dropdown-toggle wave-effect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="feather icon-bell"><span class="notification-count">27</span></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                      <li>
-                        <a href="#" class="wave-effect">
-                          <span class="avatar">
-                            <img src="https://bootadmin.org/images/demo/profile.png" alt="Mr. Chu" />
-                          </span>
-                          <span class="name">Jas Gillionaire</span>
-                          <span class="message">Like your post: “Contact Form 7 Multi-Step”</span>
-                          <span class="time">45 min</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="wave-effect">
-                          <span class="avatar">
-                            <img src="https://bootadmin.org/images/demo/user.jpg" alt="Andrew" />
-                          </span>
-                          <span class="name">Gurinder Singh</span>
-                          <span class="message">Like your post: “Contact Form 7 Multi-Step”</span>
-                          <span class="time">45 min</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="wave-effect">
-                          <span class="avatar">
-                            <img src="https://bootadmin.org/images/demo/profile.png" alt="Mr. Chu" />
-                          </span>
-                          <span class="name">Andrew the Canadian</span>
-                          <span class="message">Like your post: “Contact Form 7 Multi-Step”</span>
-                          <span class="time">45 min</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="wave-effect">
-                          <span class="avatar">
-                            <img src="https://bootadmin.org/images/demo/user.jpg" alt="Mr. Chu" />
-                          </span>
-                          <span class="name">Artsy Shohan</span>
-                          <span class="message">Like your post: “Contact Form 7 Multi-Step”</span>
-                          <span class="time">45 min</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="wave-effect">
-                          <span class="avatar">
-                            <img src="https://bootadmin.org/images/demo/profile.png" alt="Mr. Chu" />
-                          </span>
-                          <span class="name">Sazzad Shammad</span>
-                          <span class="message">Like your post: “Contact Form 7 Multi-Step”</span>
-                          <span class="time">45 min</span>
-                        </a>
-                      </li>
-                      <li><a href="/notification" class="dropdown-item all-notifications wave-effect">See more messages <i class="feather icon-arrow-down"></i></a></li>
+                    </div>
+                    <!-- Nav -->
+                    <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">All files</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">Shared</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">File requests</a>
+                        </li>
                     </ul>
-                  </li>
-                  <li class="mobile-menu-toggle">
-                    <a href="#" class="menu-toggle wave-effect">
-                      <i class="feather icon-menu"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-                                           
-                                </li>
-                                <li class="mobile-menu-toggle">
-                                    <a href="#" class="menu-toggle wave-effect">
-                                        <i class="feather icon-menu"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
-
-            <aside class="offcanvas-menu">
-                <div class="offcanvas-button">
-                    <a href="#" class="btn wave-effect offcanvas-toggle font-20"><span
-                            aria-hidden="true">&times;</span></a>
-                </div>
-                <h5 class="offcanvas-title">List Group</h4>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-
-                    <h5 class="offcanvas-title">List Group</h4>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Cras justo odio
-                                <span class="badge badge-primary badge-pill">14</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Dapibus ac facilisis in
-                                <span class="badge badge-primary badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                        </ul>
-
-                        <h5 class="offcanvas-title">List Group Content</h4>
-                            <div class="list-group list-group-flush">
-
-                            </div>
-            </aside>
-
-
-
-            <!-- Main Menu -->
-            <div class="sidebar">
-                <div class="logo">
-                    <a href="/">
-                        <span class="logo-emblem"><img src="img/logo1.png" alt="BA" /></span>
-                        <span class="logo-full">Asistencia</span>
-                    </a>
-                </div>
-                <ul id="sidebarCookie">
-                    <li class="spacer"></li>
-                    <li class="profile">
-                        <span class="profile-image">
-                            <img src="img/logo1.png" alt="profile" />
-                        </span>
-                        <span class="profile-name">
-                            Centro Educativo </span>
-
-                    </li>
-                    <li class="spacer"></li>
-
-                    <li class="nav-item">
-                        <a class="nav-link wave-effect collapsed wave-effect" data-parent="#sidebarCookie"
-                            data-toggle="collapse" href="#navDashboard" aria-expanded="false"
-                            aria-controls="page-dashboards">
-                            <i class="feather icon-grid"></i>
-                            <span class="menu-title">Dashboard</span>
-                            <i class="feather icon-chevron-down down-arrow"></i>
-                        </a>
-                        <div class="collapse" id="navDashboard">
-                            <ul class="flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link wave-effect" href="http://bootadmin.org/">
-                                        <i class="feather icon-layout"></i>
-                                        <span class="menu-title">Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link wave-effect" href="http://bootadmin.org/">
-                                        <i class="feather icon-shopping-bag"></i>
-                                        <span class="menu-title">eCommerce</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link js-darkSidebar wave-effect" href="javascript: void();">
-                                        <i class="feather icon-shopping-bag"></i>
-                                        <span class="menu-title">Toggle Sidebar Color</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-
-                </ul>
-            </div>
-            </li>
-
-
-        </div>
-
-        <main>
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-6">
-                        <h4 class="page-title">Dashboard</h4>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="col-6">
-                        <div class="text-right">
-                            <small>Estudiantes</small>
-                            <h5 class="text-info">3,458</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        </header>
+        <!-- Main -->
+        <main class="py-6 bg-surface-secondary">
             <div class="container-fluid">
-                <div class="row">
-                    <!-- column -->
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card card-hover">
+                <!-- Card stats -->
+                <div class="row g-6 mb-6">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow border-0">
                             <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mr-4">
-                                        <small>Presentes</small>
-                                        <h4 class="mb-0">3,567.53</h4>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Budget</span>
+                                        <span class="h3 font-bold mb-0">$750.90</span>
                                     </div>
-                                    <div class="chart ml-auto">
-                                        asdfadf
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- column -->
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card card-hover bg-red">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mr-4">
-                                        <small>Ausentes</small>
-                                        <h4 class="mb-0">3,567.53</h4>
-                                    </div>
-                                    <div class="chart ml-auto">
-                                        asdfadf
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- column -->
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card card-hover bg-green">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mr-4">
-                                        <small>Justificados</small>
-                                        <h4 class="mb-0">3,567.53</h4>
-                                    </div>
-                                    <div class="chart ml-auto">
-                                        asdfadf
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <!-- title -->
-                                <div class="d-md-flex align-items-center">
-                                    <div>
-                                        <h4 class="card-title">Registro</h4>
-                                    </div> 
-                                    <div class="ml-auto">
-                                        <div class="dl">
-                                            <select class="custom-select">
-                                                <option value="0" selected="">Mes</option>
-                                                <option value="1">Dia</option>
-                                                <option value="2">Semana</option>
-                                                <option value="3">Año</option>
-                                            </select>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                                            <i class="bi bi-credit-card"></i>
                                         </div>
-                                            <div class="d-flex">
-                                                <select class="custom-select">
-                                                    <option value="0" selected="">1 año</option>
-                                                    <option value="1">2año</option>
-                                                    <option value="2">3año</option>
-                                                    <option value="3">4año</option>
-                                                    <option value="4">5año</option>
-                                                </select>
-                                             
-                                            </div>
-                                            <div class="d-flex">
-                                                <select class="custom-select">
-                                                    <option value="0" selected="">A</option>
-                                                    <option value="1">B</option>
-                                                    <option value="2">C</option>
-                                                
-                                                </select>
-
-                                                </div>
-                                         
                                     </div>
                                 </div>
-                                <!-- title -->
+                                <div class="mt-2 mb-0 text-sm">
+                                    <span class="badge badge-pill bg-soft-success text-success me-2">
+                                        <i class="bi bi-arrow-up me-1"></i>13%
+                                    </span>
+                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table v-middle">
-                                    <thead>
-                                        <tr class="bg-light">
-                                            <th class="border-top-0">Products</th>
-                                            <th class="border-top-0">License</th>
-                                            <th class="border-top-0">Support Agent</th>
-                                            <th class="border-top-0">Technology</th>
-                                            <th class="border-top-0">Tickets</th>
-                                            <th class="border-top-0">Sales</th>
-                                            <th class="border-top-0">Earnings</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle btn-info text-white">EA</a></div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Elite Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>John Doe</td>
-                                            <td>
-                                                <label class="label label-danger">Angular</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle btn-warning text-white">MA</a></div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Monster Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>Venessa Fern</td>
-                                            <td>
-                                                <label class="label label-info">Vue Js</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle btn-success text-white">MP</a></div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Material Pro Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>John Doe</td>
-                                            <td>
-                                                <label class="label label-success">Bootstrap</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a
-                                                            class="btn btn-circle btn-primary text-white">AA</a></div>
-                                                    <div class="">
-                                                        <h4 class="m-b-0 font-16">Ample Admin</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>Single Use</td>
-                                            <td>John Doe</td>
-                                            <td>
-                                                <label class="label label-purple">React</label>
-                                            </td>
-                                            <td>46</td>
-                                            <td>356</td>
-                                            <td>
-                                                <h5 class="m-b-0">$2850.06</h5>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">New projects</span>
+                                        <span class="h3 font-bold mb-0">215</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2 mb-0 text-sm">
+                                    <span class="badge badge-pill bg-soft-success text-success me-2">
+                                        <i class="bi bi-arrow-up me-1"></i>30%
+                                    </span>
+                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total hours</span>
+                                        <span class="h3 font-bold mb-0">1.400</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                                            <i class="bi bi-clock-history"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2 mb-0 text-sm">
+                                    <span class="badge badge-pill bg-soft-danger text-danger me-2">
+                                        <i class="bi bi-arrow-down me-1"></i>-5%
+                                    </span>
+                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">Work load</span>
+                                        <span class="h3 font-bold mb-0">95%</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                                            <i class="bi bi-minecart-loaded"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2 mb-0 text-sm">
+                                    <span class="badge badge-pill bg-soft-success text-success me-2">
+                                        <i class="bi bi-arrow-up me-1"></i>10%
+                                    </span>
+                                    <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
+                <div class="card shadow border-0 mb-7">
+                    <div class="card-header">
+                        <h5 class="mb-0">Applications</h5>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-nowrap">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Offer</th>
+                                    <th scope="col">Meeting</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Robert Fox
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Feb 15, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Dribbble
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $3.500
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-success"></i>Scheduled
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Darlene Robertson
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Apr 15, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Netguru
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $2.750
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-warning"></i>Postponed
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Theresa Webb
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Mar 20, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Figma
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $4.200
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-success"></i>Scheduled
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Kristin Watson
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Feb 15, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Mailchimp
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $3.500
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-dark"></i>Not discussed
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Cody Fisher
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Apr 10, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Webpixels
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $1.500
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-danger"></i>Canceled
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Robert Fox
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Feb 15, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Dribbble
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $3.500
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-success"></i>Scheduled
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Darlene Robertson
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Apr 15, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Netguru
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $2.750
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-warning"></i>Postponed
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Theresa Webb
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Mar 20, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Figma
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $4.200
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-success"></i>Scheduled
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Kristin Watson
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Feb 15, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Mailchimp
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $3.500
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-dark"></i>Not discussed
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img alt="..." src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Cody Fisher
+                                        </a>
+                                    </td>
+                                    <td>
+                                        Apr 10, 2021
+                                    </td>
+                                    <td>
+                                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
+                                        <a class="text-heading font-semibold" href="#">
+                                            Webpixels
+                                        </a>
+                                    </td>
+                                    <td>
+                                        $1.500
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-lg badge-dot">
+                                            <i class="bg-danger"></i>Canceled
+                                        </span>
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer border-0 py-5">
+                        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+                    </div>
+                </div>
             </div>
-
-
-            <!-- Footer -->
-
-
         </main>
     </div>
-
-    </div>
-
-
-
-    <!-- Le Javascript -->
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
-        integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://bootadmin.org/scripts/vendor/bootstrap.min.js"></script>
-    <script src="https://bootadmin.org/scripts/vendor/library.min.js"></script>
-
-
-
-    <script src="https://bootadmin.org/scripts/core/main.js"></script>
-
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-104952515-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+</div>
+    
 </body>
-
 </html>
