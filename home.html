@@ -166,6 +166,36 @@
 
                                             </div>
                                         </div>
+                                    </div>
+
+
+                                        <!-- modal para editar -->
+                                        <div id="myModal2" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close" onclick="closeModal2()">&times;</span>
+                                                <h2>Editar Asistencia</h2>
+                                                <input type="hidden" id="indexE">
+
+                                                <label for="name">Maestro:</label>
+                                                <input type="text" id="name1" name="name"
+                                                    placeholder="Nombre del maestro" required><br><br>
+                                                <label for="seccion">Seccion:</label>
+                                                <input type="select" id="seccion1" name="seccion" placeholder="Seccion"
+                                                    required><br><br>
+                                                <label for="fecha">Fecha:</label>
+                                                <input type="date" id="fecha1" name="fecha" required><br><br>
+                                                <label for="mujeres">Mujeres:</label>
+                                                <input type="number" id="mujeres1" name="mujeres" required><br><br>
+                                                <label for="varones">Varones:</label>
+                                                <input type="number" id="varones1" name="varones" required><br><br>
+                                                <label for="total">Total:</label>
+                                                <input type="number" id="total1" name="total" required><br><br>
+                                                <button class="btnguardar" type="button"
+                                                    onclick="Editar()">Guardar</button>
+                                                <button class="btncerrar" type="button"
+                                                    onclick="closeModal2()">Cerrar</button>
+
+
 
                                     </div>
                                 </div>
@@ -342,6 +372,13 @@
             document.getElementById("myModal").style.display = "none";
         }
 
+        function closeModal2() {
+            document.getElementById("myModal2").style.display = "none";
+        }
+        function openModal2() {
+            document.getElementById("myModal2").style.display = "block";
+        }
+
         const guardar = () => {
             let name = document.getElementById("name").value;
             let seccion = document.getElementById("seccion").value;
@@ -360,9 +397,9 @@
         const cargar = () => {
             let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
             let tabla = document.getElementById("tablaA");
-            tabla.innerHTML = "";
-            teams.forEach((team, index) => {
-                tabla.innerHTML += `
+            var html = "";
+            teams.map((team, index) => {
+                html += `
                 <tr>
                     <td>${team.name}</td>
                     <td>${team.seccion}</td>
@@ -372,10 +409,10 @@
                     <td>${team.varones}</td>
                     <td>${team.total}</td>
                     <td class="text-end">
-                        <button class="btn btn-sm btn-secondary me-2">
+                        <button class="btn btn-sm btn-secondary me-2" onclick="editar1('${team.name}', '${team.seccion}', '${team.fecha}', '${team.mujeres}', '${team.varones}', '${team.total}', ${index})">
                             <i class="bi bi-pencil"></i>
                         </button>
-                        <button class="btn btn-sm btn-danger">
+                        <button class="btn btn-sm btn-danger" onclick="eliminar(${index})">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -384,6 +421,43 @@
             });
             tabla.innerHTML = html;
         }
+
+        const eliminar = (index) => {
+            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
+            teams.splice(index, 1);
+            localStorage.setItem("asistencias", JSON.stringify(teams));
+            cargar();
+        }
+
+        const Editar = () => {
+            var index = document.getElementById("indexE").value;
+            let name = document.getElementById("name1").value;
+            let seccion = document.getElementById("seccion1").value;
+            let fecha = document.getElementById("fecha1").value;
+            let mujeres = document.getElementById("mujeres1").value;
+            let varones = document.getElementById("varones1").value;
+            let total = document.getElementById("total1").value;
+
+            let teams = JSON.parse(localStorage.getItem("asistencias"));
+            teams[index] = { name, seccion, fecha, mujeres, varones, total};
+            localStorage.setItem("asistencias", JSON.stringify(teams));
+            closeModal2();
+            cargar();
+            
+        }
+        const editar1 = (name,seccion,fecha,mujeres,varones,total,index) => {
+            document.getElementById("name1").value = name;
+            document.getElementById("seccion1").value = seccion;
+            document.getElementById("fecha1").value = fecha;
+            document.getElementById("mujeres1").value = mujeres;
+            document.getElementById("varones1").value = varones;
+            document.getElementById("total1").value = total
+
+            document.getElementById("indexE").value = index;
+            openModal2();
+        }
+        cargar();
+
 
 
 
