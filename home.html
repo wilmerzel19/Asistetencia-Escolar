@@ -48,10 +48,7 @@
                         </a>
                         <!-- Menu -->
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
-                            <a href="#" class="dropdown-item">Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Billing</a>
-                            <hr class="dropdown-divider">
+                           
                             <a href="#" class="dropdown-item">Logout</a>
                         </div>
                     </div>
@@ -133,11 +130,11 @@
                                                 <label for="fecha">Fecha:</label>
                                                 <input type="date" id="fecha" name="fecha" required><br><br>
                                                 <label for="mujeres">Mujeres:</label>
-                                                <input type="number" id="mujeres" name="mujeres" required><br><br>
+                                                <input type="number" id="mujeres" name="mujeres" placeholder="0" required><br><br>
                                                 <label for="varones">Varones:</label>
-                                                <input type="number" id="varones" name="varones" required><br><br>
+                                                <input type="number" id="varones" name="varones" placeholder="0" required><br><br>
                                                 <label for="total">Total:</label>
-                                                <input type="number" id="total" name="total" required><br><br>
+                                                <input type="number" id="total" name="total" placeholder="total" required><br><br>
                                                 <button class="btnguardar" type="button"
                                                     onclick="guardar()">Guardar</button>
                                                 <button class="btncerrar" type="button"
@@ -150,7 +147,6 @@
                                             </div>
                                         </div>
                                     </div>
-
 
                                     <!-- modal para editar -->
                                     <div id="myModal2" class="modal">
@@ -166,13 +162,13 @@
                                             <input type="select" id="seccion1" name="seccion" placeholder="Seccion"
                                                 required><br><br>
                                             <label for="fecha">Fecha:</label>
-                                            <input type="date" id="fecha1" name="fecha" required><br><br>
+                                            <input type="date" id="fecha1" name="fecha"  required ><br><br>
                                             <label for="mujeres">Mujeres:</label>
-                                            <input type="number" id="mujeres1" name="mujeres" required><br><br>
+                                            <input type="number" id="mujeres1" name="mujeres" placeholder="0" required><br><br>
                                             <label for="varones">Varones:</label>
-                                            <input type="number" id="varones1" name="varones" required><br><br>
+                                            <input type="number" id="varones1" name="varones" placeholder="0" required><br><br>
                                             <label for="total">Total:</label>
-                                            <input type="number" id="total1" name="total" required><br><br>
+                                            <input type="number" id="total1" name="total" placeholder="total" required><br><br>
                                             <button class="btnguardar" type="button" onclick="Editar()">Guardar</button>
                                             <button class="btncerrar" type="button"
                                                 onclick="closeModal2()">Cerrar</button>
