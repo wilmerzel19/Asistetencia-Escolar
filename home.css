@@ -22,6 +22,32 @@
   
 
 }
+
+/* Estilos para el tema claro */
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.card {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+/* Estilos para el tema oscuro */
+.dark-mode body {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.dark-mode .card {
+    background-color: #666666;
+    color: #ffffff;
+}
+
+
+
+
 modal {
     display: none;
     position: fixed;
