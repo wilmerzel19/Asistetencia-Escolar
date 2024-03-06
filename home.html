@@ -571,6 +571,17 @@ toggleThemeBtn.addEventListener("click", function() {
     body.classList.toggle("dark-mode");
 });
 
+const  darkMode = localStorage.getItem("dark-mode");
+if (darkMode) {
+    body.classList.add("dark-mode");
+} else {
+    body.classList.remove("dark-mode");
+}
+
+ const calendario = () => {
+            window.location.href = "calendario.html";
+        }
+
 
 
     </script>
