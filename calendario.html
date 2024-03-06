@@ -1,274 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="calendario.css">
-    <title>Calendario</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="calendario.css">
+	<title>Calendario</title>
 </head>
 <body>
-    <div class="p-5">
-        <h2 class="mb-4">Full Calendar</h2>
-        <div class="card">
-          <div class="card-body p-0">
-            <div id="calendar"></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- calendar modal -->
-      <div id="modal-view-event" class="modal modal-top fade calendar-modal">
-              <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                      <div class="modal-body">
-                          <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span></h4>
-                          <div class="event-body"></div>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      
-      <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <form id="add-event">
-              <div class="modal-body">
-              <h4>Add Event Detail</h4>        
-                <div class="form-group">
-                  <label>Event name</label>
-                  <input type="text" class="form-control" name="ename">
-                </div>
-                <div class="form-group">
-                  <label>Event Date</label>
-                  <input type='text' class="datetimepicker form-control" name="edate">
-                </div>        
-                <div class="form-group">
-                  <label>Event Description</label>
-                  <textarea class="form-control" name="edesc"></textarea>
-                </div>
-                <div class="form-group">
-                  <label>Event Color</label>
-                  <select class="form-control" name="ecolor">
-                    <option value="fc-bg-default">fc-bg-default</option>
-                    <option value="fc-bg-blue">fc-bg-blue</option>
-                    <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
-                    <option value="fc-bg-pinkred">fc-bg-pinkred</option>
-                    <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Event Icon</label>
-                  <select class="form-control" name="eicon">
-                    <option value="circle">circle</option>
-                    <option value="cog">cog</option>
-                    <option value="group">group</option>
-                    <option value="suitcase">suitcase</option>
-                    <option value="calendar">calendar</option>
-                  </select>
-                </div>        
-            </div>
-              <div class="modal-footer">
-               <button type="button" class="btn btn-primary" id="save-event">Save</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>        
-            </div>
-            </form>
-          </div>
-        </div>
-      </div>
+	<div class="calendar">
+		<div class="header">
+			<a data-action="prev-month" href="javascript:void(0)" title="Previous Month"><i></i></a>
+			<div class="text" data-render="month-year"></div>
+			<a data-action="next-month" href="javascript:void(0)" title="Next Month"><i></i></a>
+		</div>
+		<div class="months" data-flow="left">
+			<div class="month month-a">
+				<div class="render render-a"></div>
+			</div>
+			<div class="month month-b">
+				<div class="render render-b"></div>
+			</div>
+		</div>
+	</div>
 
-
-
-
-
-
-      <script>
-        jQuery(document).ready(function(){
-  jQuery('.datetimepicker').datepicker({
-      timepicker: true,
-      language: 'en',
-      range: true,
-      multipleDates: true,
-		  multipleDatesSeparator: " - "
+	<script>
+		var Calendar = function(t) {
+    this.divId = t.RenderID ? t.RenderID : '[data-render="calendar"]', this.DaysOfWeek = t.DaysOfWeek ? t.DaysOfWeek : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], this.Months = t.Months ? t.Months : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var e = new Date;
+    this.CurrentMonth = e.getMonth(), this.CurrentYear = e.getFullYear();
+    var r = t.Format;
+    this.f = "string" == typeof r ? r.charAt(0).toUpperCase() : "M"
+};
+Calendar.prototype.nextMonth = function() {
+    11 == this.CurrentMonth ? (this.CurrentMonth = 0, this.CurrentYear = this.CurrentYear + 1) : this.CurrentMonth = this.CurrentMonth + 1, this.divId = '[data-active="false"] .render', this.showCurrent()
+}, Calendar.prototype.prevMonth = function() {
+    0 == this.CurrentMonth ? (this.CurrentMonth = 11, this.CurrentYear = this.CurrentYear - 1) : this.CurrentMonth = this.CurrentMonth - 1, this.divId = '[data-active="false"] .render', this.showCurrent()
+}, Calendar.prototype.previousYear = function() {
+    this.CurrentYear = this.CurrentYear - 1, this.showCurrent()
+}, Calendar.prototype.nextYear = function() {
+    this.CurrentYear = this.CurrentYear + 1, this.showCurrent()
+}, Calendar.prototype.showCurrent = function() {
+    this.Calendar(this.CurrentYear, this.CurrentMonth)
+}, Calendar.prototype.checkActive = function() {
+    1 == document.querySelector(".months").getAttribute("class").includes("active") ? document.querySelector(".months").setAttribute("class", "months") : document.querySelector(".months").setAttribute("class", "months active"), "true" == document.querySelector(".month-a").getAttribute("data-active") ? (document.querySelector(".month-a").setAttribute("data-active", !1), document.querySelector(".month-b").setAttribute("data-active", !0)) : (document.querySelector(".month-a").setAttribute("data-active", !0), document.querySelector(".month-b").setAttribute("data-active", !1)), setTimeout(function() {
+        document.querySelector(".calendar .header").setAttribute("class", "header active")
+    }, 200), document.querySelector("body").setAttribute("data-theme", this.Months[document.querySelector('[data-active="true"] .render').getAttribute("data-month")].toLowerCase())
+}, Calendar.prototype.Calendar = function(t, e) {
+    "number" == typeof t && (this.CurrentYear = t), "number" == typeof t && (this.CurrentMonth = e);
+    var r = (new Date).getDate(),
+        n = (new Date).getMonth(),
+        a = (new Date).getFullYear(),
+        o = new Date(t, e, 1).getDay(),
+        i = new Date(t, e + 1, 0).getDate(),
+        u = 0 == e ? new Date(t - 1, 11, 0).getDate() : new Date(t, e, 0).getDate(),
+        s = "<span>" + this.Months[e] + " &nbsp; " + t + "</span>",
+        d = '<div class="table">';
+    d += '<div class="row head">';
+    for (var c = 0; c < 7; c++) d += '<div class="cell">' + this.DaysOfWeek[c] + "</div>";
+    d += "</div>";
+    for (var h, l = dm = "M" == this.f ? 1 : 0 == o ? -5 : 2, v = (c = 0, 0); v < 6; v++) {
+        d += '<div class="row">';
+        for (var m = 0; m < 7; m++) {
+            if ((h = c + dm - o) < 1) d += '<div class="cell disable">' + (u - o + l++) + "</div>";
+            else if (h > i) d += '<div class="cell disable">' + l++ + "</div>";
+            else {
+                d += '<div class="cell' + (r == h && this.CurrentMonth == n && this.CurrentYear == a ? " active" : "") + '"><span>' + h + "</span></div>", l = 1
+            }
+            c % 7 == 6 && h >= i && (v = 10), c++
+        }
+        d += "</div>"
+    }
+    d += "</div>", document.querySelector('[data-render="month-year"]').innerHTML = s, document.querySelector(this.divId).innerHTML = d, document.querySelector(this.divId).setAttribute("data-date", this.Months[e] + " - " + t), document.querySelector(this.divId).setAttribute("data-month", e)
+}, window.onload = function() {
+    var t = new Calendar({
+        RenderID: ".render-a",
+        Format: "M"
     });
-  jQuery("#add-event").submit(function(){
-      alert("Submitted");
-      var values = {};
-      $.each($('#add-event').serializeArray(), function(i, field) {
-          values[field.name] = field.value;
-      });
-      console.log(
-        values
-      );
-  });
-});
- jQuery("#save-event").click(function(){
-    var values = {};
-    // Obtener los valores del formulario y crear el objeto de evento
-    jQuery.each(jQuery("#add-event-form").serializeArray(), function(i, field) {
-      values[field.name] = field.value;
-    });
+    t.showCurrent(), t.checkActive();
+    var e = document.querySelectorAll(".header [data-action]");
+    for (i = 0; i < e.length; i++) e[i].onclick = function() {
+        if (document.querySelector(".calendar .header").setAttribute("class", "header"), "true" == document.querySelector(".months").getAttribute("data-loading")) return document.querySelector(".calendar .header").setAttribute("class", "header active"), !1;
+        var e;
+        document.querySelector(".months").setAttribute("data-loading", "true"), this.getAttribute("data-action").includes("prev") ? (t.prevMonth(), e = "left") : (t.nextMonth(), e = "right"), t.checkActive(), document.querySelector(".months").setAttribute("data-flow", e), document.querySelector('.month[data-active="true"]').addEventListener("webkitTransitionEnd", function() {
+            document.querySelector(".months").removeAttribute("data-loading")
+        }), document.querySelector('.month[data-active="true"]').addEventListener("transitionend", function() {
+            document.querySelector(".months").removeAttribute("data-loading")
+        })
+    }
+};
 
-    // Agregar el nuevo evento al calendario
-    jQuery('#calendar').fullCalendar('renderEvent', {
-      title: values.title,
-      description: values.description,
-      start: values.start,
-      end: values.end,
-      className: values.className,
-      icon: values.icon,
-      allDay: false
-    }, true); // true para hacer que el evento sea "stick" (permanente)
 
-    // Limpiar el formulario después de agregar el evento
-    
 
-    // Cerrar el modal después de agregar el evento
-    jQuery('#modal-view-event-add').modal('hide');
-  });
-(function () {    
-    'use strict';
-    // ------------------------------------------------------- //
-    // Calendar
-    // ------------------------------------------------------ //
-	jQuery(function() {
-		// page is ready
-		jQuery('#calendar').fullCalendar({
-			themeSystem: 'bootstrap4',
-			// emphasizes business hours
-			businessHours: false,
-			defaultView: 'month',
-			// event dragging & resizing
-			editable: true,
-			// header
-			header: {
-				left: 'title',
-				center: 'month,agendaWeek,agendaDay',
-				right: 'today prev,next'
-			},
-			events: [
-				{
-					title: 'Barber',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-05-05',
-					end: '2023-05-05',
-					className: 'fc-bg-default',
-					icon : "circle"
-				},
-				{
-					title: 'Flight Paris',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-08-08T14:00:00',
-					end: '2023-08-08T20:00:00',
-					className: 'fc-bg-deepskyblue',
-					icon : "cog",
-					allDay: false
-				},
-				{
-					title: 'Team Meeting',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-07-10T13:00:00',
-					end: '2023-07-10T16:00:00',
-					className: 'fc-bg-pinkred',
-					icon : "group",
-					allDay: false
-				},
-				{
-					title: 'Meeting',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-08-12',
-					className: 'fc-bg-lightgreen',
-					icon : "suitcase"
-				},
-				{
-					title: 'Conference',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-08-13',
-					end: '2023-08-15',
-					className: 'fc-bg-blue',
-					icon : "calendar"
-				},
-				{
-					title: 'Baby Shower',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-08-13',
-					end: '2023-08-14',
-					className: 'fc-bg-default',
-					icon : "child"
-				},
-				{
-					title: 'Birthday',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-09-13',
-					end: '2023-09-14',
-					className: 'fc-bg-default',
-					icon : "birthday-cake"
-				},
-				{
-					title: 'Restaurant',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-10-15T09:30:00',
-					end: '2023-10-15T11:45:00',
-					className: 'fc-bg-default',
-					icon : "glass",
-					allDay: false
-				},
-				{
-					title: 'Dinner',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-11-15T20:00:00',
-					end: '2023-11-15T22:30:00',
-					className: 'fc-bg-default',
-					icon : "cutlery",
-					allDay: false
-				},
-				{
-					title: 'Shooting',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-08-25',
-					end: '2023-08-25',
-					className: 'fc-bg-blue',
-					icon : "camera"
-				},
-				{
-					title: 'Go Space :)',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-12-27',
-					end: '2023-12-27',
-					className: 'fc-bg-default',
-					icon : "rocket"
-				},
-				{
-					title: 'Dentist',
-					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-					start: '2023-12-29T11:30:00',
-					end: '2023-12-29T012:30:00',
-					className: 'fc-bg-blue',
-					icon : "medkit",
-					allDay: false
-				}
-			],
-			eventRender: function(event, element) {
-				if(event.icon){
-					element.find(".fc-title").prepend("<i class='fa fa-"+event.icon+"'></i>");
-				}
-			  },
-			dayClick: function() {
-				jQuery('#modal-view-event-add').modal();
-			},
-			eventClick: function(event, jsEvent, view) {
-			        jQuery('.event-icon').html("<i class='fa fa-"+event.icon+"'></i>");
-					jQuery('.event-title').html(event.title);
-					jQuery('.event-body').html(event.description);
-					jQuery('#modal-view-event').modal();
-			},
-		})
-	});
-  
-})(jQuery);
-      </script>
-    
+	</script>
+	
 </body>
 </html>
+
+
+
+
