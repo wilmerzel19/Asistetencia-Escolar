@@ -47,11 +47,12 @@
                             </div>
                         </a>
                         <!-- Menu -->
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar"><!-- Agrega este botón de alternancia en tu HTML -->
-<!-- Agrega este botón de alternancia en tu HTML -->
-<button id="toggle-theme-btn">Cambiar Tema</button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+                            <!-- Agrega este botón de alternancia en tu HTML -->
+                            <!-- Agrega este botón de alternancia en tu HTML -->
+                            <button id="toggle-theme-btn">Cambiar Tema</button>
 
-                           
+
                             <a href="#" class="dropdown-item">Logout</a>
 
                         </div>
@@ -67,8 +68,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-bar-chart"></i> Analitycs
+                            <a class="nav-link" onclick="reportes()">
+                                <i class="bi bi-bar-chart"></i> Reportes
                             </a>
                         </li>
                         <li class="nav-item">
@@ -136,11 +137,14 @@
                                                 <label for="fecha">Fecha:</label>
                                                 <input type="date" id="fecha" name="fecha" required><br><br>
                                                 <label for="mujeres">Mujeres:</label>
-                                                <input type="number" id="mujeres" name="mujeres" placeholder="0" required><br><br>
+                                                <input type="number" id="mujeres" name="mujeres" placeholder="0"
+                                                    required><br><br>
                                                 <label for="varones">Varones:</label>
-                                                <input type="number" id="varones" name="varones" placeholder="0" required><br><br>
+                                                <input type="number" id="varones" name="varones" placeholder="0"
+                                                    required><br><br>
                                                 <label for="total">Total:</label>
-                                                <input type="number" id="total" name="total" placeholder="total" required><br><br>
+                                                <input type="number" id="total" name="total" placeholder="total"
+                                                    required><br><br>
                                                 <button class="btnguardar" type="button"
                                                     onclick="guardar()">Guardar</button>
                                                 <button class="btncerrar" type="button"
@@ -168,13 +172,16 @@
                                             <input type="select" id="seccion1" name="seccion" placeholder="Seccion"
                                                 required><br><br>
                                             <label for="fecha">Fecha:</label>
-                                            <input type="date" id="fecha1" name="fecha"  required ><br><br>
+                                            <input type="date" id="fecha1" name="fecha" required><br><br>
                                             <label for="mujeres">Mujeres:</label>
-                                            <input type="number" id="mujeres1" name="mujeres" placeholder="0" required><br><br>
+                                            <input type="number" id="mujeres1" name="mujeres" placeholder="0"
+                                                required><br><br>
                                             <label for="varones">Varones:</label>
-                                            <input type="number" id="varones1" name="varones" placeholder="0" required><br><br>
+                                            <input type="number" id="varones1" name="varones" placeholder="0"
+                                                required><br><br>
                                             <label for="total">Total:</label>
-                                            <input type="number" id="total1" name="total" placeholder="total" required><br><br>
+                                            <input type="number" id="total1" name="total" placeholder="total"
+                                                required><br><br>
                                             <button class="btnguardar" type="button" onclick="Editar()">Guardar</button>
                                             <button class="btncerrar" type="button"
                                                 onclick="closeModal2()">Cerrar</button>
@@ -277,9 +284,9 @@
                     <div class="card shadow border-0 mb-7">
                         <div class="card-header">
                             <h5 class="mb-0">Asistencia Estudiantil</h5>
-                           
 
-                            </div>
+
+                        </div>
 
 
 
@@ -393,12 +400,16 @@
                     <td>${team.varones}</td>
                     <td>${team.total}</td>
                     <td class="text-end">
+                        <button class="btn btn-sm btn-success me-2" onclick="reportes('${team.name}', '${team.seccion}', '${team.fecha}', '${team.mujeres}', '${team.varones}', '${team.total}')">
+                            <i class="bi bi-book"></i>
                         <button class="btn btn-sm btn-secondary me-2" onclick="editar1('${team.name}', '${team.seccion}', '${team.fecha}', '${team.mujeres}', '${team.varones}', '${team.total}', ${index})">
                             <i class="bi bi-pencil"></i>
                         </button>
                         <button class="btn btn-sm btn-danger" onclick="eliminar(${index})">
                             <i class="bi bi-trash"></i>
                         </button>
+
+
                     </td>
                 </tr>
             `;
@@ -500,20 +511,6 @@
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         const eliminar = (index) => {
             let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
             teams.splice(index, 1);
@@ -560,31 +557,55 @@
 
 
 
-     
+
 
 
 
         const toggleThemeBtn = document.getElementById("toggle-theme-btn");
-const body = document.body;
+        const body = document.body;
 
-toggleThemeBtn.addEventListener("click", function() {
-    body.classList.toggle("dark-mode");
-});
+        toggleThemeBtn.addEventListener("click", function () {
+            body.classList.toggle("dark-mode");
+        });
 
-const  darkMode = localStorage.getItem("dark-mode");
-if (darkMode) {
-    body.classList.add("dark-mode");
-} else {
-    body.classList.remove("dark-mode");
-}
+        const darkMode = localStorage.getItem("dark-mode");
+        if (darkMode) {
+            body.classList.add("dark-mode");
+        } else {
+            body.classList.remove("dark-mode");
+        }
 
- 
-   const calendario = () => {
+
+        const calendario = () => {
             window.location.href = "calendario.html";
         }
 
-    
 
+
+        
+
+
+
+        const reportes = () => {
+    let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
+    let tablaReportes = document.getElementById("tablaReportes");
+
+    teams.forEach(team => {
+        let row = tablaReportes.insertRow();
+        row.innerHTML = `
+            <td>${team.name}</td>
+            <td>${team.seccion}</td>
+            <td>${team.fecha}</td>
+            <td>${team.mujeres}</td>
+            <td>${team.varones}</td>
+            <td>${team.total}</td>
+        `;
+    });
+
+    localStorage.setItem("asistencias", JSON.stringify([])); // Vaciar la tabla de asistencias
+
+    window.location.href = "reporte.html"; // Redirigir a la página de reporte
+}
 
 
     </script>

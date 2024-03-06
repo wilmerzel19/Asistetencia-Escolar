@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Estudiantil</title>
+</head>
+<body>
+   
+        <h1>Reporte Estudiantil</h1>
+        <table id="reporteTable">
+            <thead>
+                <tr>
+                    <th>Maestro</th>
+                    <th>Sección</th>
+                    <th>Fecha</th>
+                    <th>Mujeres</th>
+                    <th>Varones</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán los datos de la tabla con JavaScript -->
+            </tbody>
+        </table>
+    
+        <script>
+            // Obtener los datos guardados en el localStorage
+            let datosReporte = JSON.parse(localStorage.getItem("datosReporte"));
+    
+            // Llenar la tabla con los datos
+            let reporteTable = document.getElementById("reporteTable");
+            let tbody = reporteTable.getElementsByTagName("tbody")[0];
+            datosReporte.forEach(dato => {
+                let row = tbody.insertRow();
+                row.insertCell(0).innerText = dato.maestro;
+                row.insertCell(1).innerText = dato.seccion;
+                row.insertCell(2).innerText = dato.fecha;
+                row.insertCell(3).innerText = dato.mujeres;
+                row.insertCell(4).innerText = dato.varones;
+                row.insertCell(5).innerText = dato.total;
+            });
+        </script>
+  
+
+
+
+ 
+
+
+
+
+
+
+
+    
+</body>
+</html>
