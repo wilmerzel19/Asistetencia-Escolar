@@ -606,6 +606,30 @@
 
     window.location.href = "reporte.html"; // Redirigir a la página de reporte
 }
+// Función para comprobar si ha pasado un minuto y eliminar los datos de la tarjeta en ese caso
+function comprobarEliminarDatosTarjeta() {
+    // Obtener la hora de creación de los datos de la tarjeta del almacenamiento local
+    var horaCreacionDatosTarjeta = localStorage.getItem('horaCreacionDatosTarjeta');
+
+    // Si ha pasado un minuto desde la creación de los datos de la tarjeta
+    if (Date.now() - horaCreacionDatosTarjeta >= 1 * 60 * 1000) {
+        // Eliminar los datos de la tarjeta del almacenamiento local
+        localStorage.removeItem('horaCreacionDatosTarjeta');
+        localStorage.removeItem('totalMujeres');
+        localStorage.removeItem('totalVarones');
+        // Aquí deberías incluir el código para actualizar la tarjeta en el DOM o realizar cualquier otra acción necesaria
+        cargar(); // Actualizar la tarjeta después de eliminar los datos
+    }
+}
+
+// Llamar a la función para comprobar y eliminar los datos de la tarjeta cada vez que se carga la página
+window.onload = function() {
+    comprobarEliminarDatosTarjeta(); // Comprobar al cargar la página
+    // Ejecutar la función cada minuto
+    setInterval(comprobarEliminarDatosTarjeta, 60 * 1000); // 60 segundos * 1000 milisegundos
+};
+
+
 
 
     </script>
