@@ -8,7 +8,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="asistencia-profesor.css">
     <title>Panel-A.E</title>
 </head>
 
@@ -63,7 +63,7 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" onclick="Dashboard()">
                                 <i class="bi bi-house"></i> Dashboard
                             </a>
                         </li>
@@ -78,7 +78,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onclick="users()"
+                            <a class="nav-link" onclick="Asistencia()">
                                 <i class="bi bi-people"></i> Users
                             </a>
                         </li>
@@ -129,22 +129,50 @@
                                                 <h2 class="textmodal">Crear Asistencia</h2>
 
                                                 <label for="name">Maestro:</label>
-                                                <input type="text" id="name" name="name"
-                                                    placeholder="Nombre del maestro" required><br><br>
-                                                <label for="seccion">Seccion:</label>
-                                                <input type="select" id="seccion" name="seccion" placeholder="Seccion"
+                                                <select id="name" name="name" required>
+                                                    <option value="" disabled selected>Selecciona un maestro</option>
+                                                    <option value="profesor1">Profesor 1</option>
+                                                    <option value="profesor2">Profesor 2</option>
+                                                    <option value="profesor3">Profesor 3</option>
+                                                </select>
+                                                <label for="total">Alumno:</label>
+                                                <input type="name" id="total" name="total" placeholder="Nombre del alumno"
                                                     required><br><br>
+                                                
+                                                <label for="seccion">Sección:</label>
+                                                <select id="seccion" name="seccion" required>
+                                                    <option value="" disabled selected>Selecciona una sección</option>
+                                                    <option value="A">Sección A</option>
+                                                    <option value="B">Sección B</option>
+                                                    <option value="C">Sección C</option>
+                                                </select>
+                                                
                                                 <label for="fecha">Fecha:</label>
                                                 <input type="date" id="fecha" name="fecha" required><br><br>
-                                                <label for="mujeres">Mujeres:</label>
-                                                <input type="number" id="mujeres" name="mujeres" placeholder="0"
-                                                    required><br><br>
-                                                <label for="varones">Varones:</label>
-                                                <input type="number" id="varones" name="varones" placeholder="0"
-                                                    required><br><br>
-                                                <label for="total">Total:</label>
-                                                <input type="number" id="total" name="total" placeholder="total"
-                                                    required><br><br>
+                                                <label for="mujeres">Condicion:</label>
+                                                <select id="mujeres" name="mujeres" required>
+                                                    <option value="presente">presente</option>
+                                                    <option value="ausente">Ausente</option>
+                                                    <option value="justificado">Justificado</option>
+                                                    <!-- Puedes agregar más opciones según sea necesario -->
+                                                </select><br><br>
+                                                
+                                                <label for="varones">Asignatura:</label>
+                                                <select id="varones" name="varones" required>
+                                                    <option value="Matematicas">Matematicas</option>
+                                                    <option value="Lyl">Lyl</option>
+                                                    <option value="Sociales">Sociales</option>
+                                                    <option value="Ciencias">Ciencias</option>
+                                                    <option value="Ingles">Ingles</option>
+                                                    <option value="Educacion Fisica">Educacion Fisica</option>
+                                                    <option value="Artes">Artes</option>
+
+                                                </select><br><br>
+
+                                                    <!-- Puedes agregar más opciones según sea necesario -->
+                                             
+                                                
+                                          
                                                 <button class="btnguardar" type="button"
                                                     onclick="guardar()">Guardar</button>
                                                 <button class="btncerrar" type="button"
@@ -238,7 +266,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <span
-                                                class="h6 font-semibold text-muted text-sm d-block mb-2">Varones</span>
+                                                class="h6 font-semibold text-muted text-sm d-block mb-2">Ausentes</span>
                                             <span id="totalVarones" class="h3 font-bold mb-0">200</span>
                                         </div>
                                         <div class="col-auto">
@@ -262,7 +290,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <span
-                                                class="h6 font-semibold text-muted text-sm d-block mb-2">Mujeres</span>
+                                                class="h6 font-semibold text-muted text-sm d-block mb-2">Justificados</span>
                                             <span id="totalMujeres" class="h3 font-bold mb-0">95</span>
                                         </div>
                                         <div class="col-auto">
@@ -298,11 +326,12 @@
 
                                 <tr>
                                     <th scope="col">Maestro</th>
+                                    <th scope="col">Alumno</th>
+
                                     <th scope="col">Seccion</th>
                                     <th scope="col">Fecha</th>
-                                    <th scope="col">Mujeres</th>
-                                    <th scope="col">varones</th>
-                                    <th scope="col">Total</th>
+                                    <th scope="col">Condicion</th>
+                                    <th scope="col">Asignatura</th>
                                     <th scope="col" class="text-end">Actions</th>
                                 </tr>
                             </thead>
@@ -363,6 +392,7 @@
 
         const guardar = () => {
             let name = document.getElementById("name").value;
+            
             let seccion = document.getElementById("seccion").value;
             let fecha = document.getElementById("fecha").value;
             let mujeres = document.getElementById("mujeres").value;
@@ -554,6 +584,19 @@
         }
 
 
+        const Asistencia = () => {
+            window.location.href = "asistencia-profesor.html";
+        }
+
+        const Dashboard = () => {
+            window.location.href = "home.html";
+        }
+
+
+
+    
+
+
 
 
 
@@ -579,11 +622,6 @@
         const calendario = () => {
             window.location.href = "calendario.html";
         }
-
-        const users = () => {
-            window.location.href = "asistencia-profesor.html";
-        }
-
 
 
 
