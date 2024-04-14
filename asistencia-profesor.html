@@ -79,7 +79,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" onclick="Asistencia()">
-                                <i class="bi bi-people"></i> Users
+                                <i class="bi bi-people"></i> Asistencia profesor
                             </a>
                         </li>
                     </ul>
@@ -135,8 +135,8 @@
                                                     <option value="profesor2">Profesor 2</option>
                                                     <option value="profesor3">Profesor 3</option>
                                                 </select>
-                                                <label for="total">Alumno:</label>
-                                                <input type="name" id="total" name="total" placeholder="Nombre del alumno"
+                                                <label for="alumno">Alumno:</label>
+                                                <input type="name" id="alumno" name="alumno" placeholder="Nombre del alumno"
                                                     required><br><br>
                                                 
                                                 <label for="seccion">Sección:</label>
@@ -149,16 +149,17 @@
                                                 
                                                 <label for="fecha">Fecha:</label>
                                                 <input type="date" id="fecha" name="fecha" required><br><br>
-                                                <label for="mujeres">Condicion:</label>
-                                                <select id="mujeres" name="mujeres" required>
+
+                                                <label for="Condicion">Condicion:</label>
+                                                <select id="Condicion" name="Condicion" required>
                                                     <option value="presente">presente</option>
                                                     <option value="ausente">Ausente</option>
                                                     <option value="justificado">Justificado</option>
                                                     <!-- Puedes agregar más opciones según sea necesario -->
                                                 </select><br><br>
                                                 
-                                                <label for="varones">Asignatura:</label>
-                                                <select id="varones" name="varones" required>
+                                                <label for="Asignatura">Asignatura:</label>
+                                                <select id="Asignatura" name="Asignatura" required>
                                                     <option value="Matematicas">Matematicas</option>
                                                     <option value="Lyl">Lyl</option>
                                                     <option value="Sociales">Sociales</option>
@@ -192,24 +193,47 @@
                                             <span class="close" onclick="closeModal2()">&times;</span>
                                             <h2>Editar Asistencia</h2>
                                             <input type="hidden" id="indexE">
-
                                             <label for="name">Maestro:</label>
-                                            <input type="text" id="name1" name="name" placeholder="Nombre del maestro"
+                                            <select id="name1" name="name" required>
+                                                <option value="" disabled selected>Selecciona un maestro</option>
+                                                <option value="profesor1">Profesor 1</option>
+                                                <option value="profesor2">Profesor 2</option>
+                                                <option value="profesor3">Profesor 3</option>
+                                            </select>
+                                            <label for="alumno">Alumno:</label>
+                                            <input type="name" id="alumno1" name="alumno" placeholder="Nombre del alumno"
                                                 required><br><br>
-                                            <label for="seccion">Seccion:</label>
-                                            <input type="select" id="seccion1" name="seccion" placeholder="Seccion"
-                                                required><br><br>
+                                            
+                                            <label for="seccion">Sección:</label>
+                                            <select id="seccion1" name="seccion" required>
+                                                <option value="" disabled selected>Selecciona una sección</option>
+                                                <option value="A">Sección A</option>
+                                                <option value="B">Sección B</option>
+                                                <option value="C">Sección C</option>
+                                            </select>
+                                            
                                             <label for="fecha">Fecha:</label>
                                             <input type="date" id="fecha1" name="fecha" required><br><br>
-                                            <label for="mujeres">Mujeres:</label>
-                                            <input type="number" id="mujeres1" name="mujeres" placeholder="0"
-                                                required><br><br>
-                                            <label for="varones">Varones:</label>
-                                            <input type="number" id="varones1" name="varones" placeholder="0"
-                                                required><br><br>
-                                            <label for="total">Total:</label>
-                                            <input type="number" id="total1" name="total" placeholder="total"
-                                                required><br><br>
+
+                                            <label for="Condicion">Condicion:</label>
+                                            <select id="Condicion1" name="Condicion" required>
+                                                <option value="presente">presente</option>
+                                                <option value="ausente">Ausente</option>
+                                                <option value="justificado">Justificado</option>
+                                                <!-- Puedes agregar más opciones según sea necesario -->
+                                            </select><br><br>
+                                            
+                                            <label for="Asignatura">Asignatura:</label>
+                                            <select id="Asignatura1" name="Asignatura" required>
+                                                <option value="Matematicas">Matematicas</option>
+                                                <option value="Lyl">Lyl</option>
+                                                <option value="Sociales">Sociales</option>
+                                                <option value="Ciencias">Ciencias</option>
+                                                <option value="Ingles">Ingles</option>
+                                                <option value="Educacion Fisica">Educacion Fisica</option>
+                                                <option value="Artes">Artes</option>
+
+                                            </select><br><br>
                                             <button class="btnguardar" type="button" onclick="Editar()">Guardar</button>
                                             <button class="btncerrar" type="button"
                                                 onclick="closeModal2()">Cerrar</button>
@@ -240,11 +264,10 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div id="card-total-asistencias" class="col">
-                                            <span
-                                                class="h6 font-semibold text-muted text-sm d-block mb-2">Presentes</span>
-                                            <span id="total-asistencias"
-                                                class="h3 font-bold mb-0">{{totalAsistencias}}</span>
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Presentes</span>
+                                            <span id="presentes" class="h3 font-bold mb-0">{{totalAsistencias}}</span>
                                         </div>
+                                        
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
                                                 <i class="bi bi-people"></i>
@@ -267,7 +290,7 @@
                                         <div class="col">
                                             <span
                                                 class="h6 font-semibold text-muted text-sm d-block mb-2">Ausentes</span>
-                                            <span id="totalVarones" class="h3 font-bold mb-0">200</span>
+                                            <span id="Ausente" class="h3 font-bold mb-0">200</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -291,7 +314,7 @@
                                         <div class="col">
                                             <span
                                                 class="h6 font-semibold text-muted text-sm d-block mb-2">Justificados</span>
-                                            <span id="totalMujeres" class="h3 font-bold mb-0">95</span>
+                                            <span id="justificado" class="h3 font-bold mb-0">95</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
@@ -392,17 +415,18 @@
 
         const guardar = () => {
             let name = document.getElementById("name").value;
-            
+            let alumno = document.getElementById("alumno").value;
             let seccion = document.getElementById("seccion").value;
+            
+            
             let fecha = document.getElementById("fecha").value;
-            let mujeres = document.getElementById("mujeres").value;
-            let varones = document.getElementById("varones").value;
-            let total = document.getElementById("total").value;
+            let Condicion = document.getElementById("Condicion").value;
+            let Asignatura = document.getElementById("Asignatura").value;
 
 
-            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
-            teams.push({ name, seccion, fecha, mujeres, varones, total });
-            localStorage.setItem("asistencias", JSON.stringify(teams));
+            let teams = JSON.parse(localStorage.getItem("clases")) || [];
+            teams.push({ name, alumno, seccion, fecha, Condicion, Asignatura });
+            localStorage.setItem("clases", JSON.stringify(teams));
             closeModal();
             cargar();
 
@@ -416,23 +440,24 @@
         }
 
         const cargar = () => {
-            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
+            let teams = JSON.parse(localStorage.getItem("clases")) || [];
             let tabla = document.getElementById("tablaA");
             var html = "";
             teams.map((team, index) => {
                 html += `
                 <tr>
                     <td>${team.name}</td>
+                    <td>${team.alumno}</td>
                     <td>${team.seccion}</td>
 
                     <td>${team.fecha}</td>
-                    <td>${team.mujeres}</td>
-                    <td>${team.varones}</td>
-                    <td>${team.total}</td>
+                    <td>${team.Condicion}</td>
+                    <td>${team.Asignatura}</td>
+              
                     <td class="text-end">
-                        <button class="btn btn-sm btn-success me-2" onclick="reportes('${team.name}', '${team.seccion}', '${team.fecha}', '${team.mujeres}', '${team.varones}', '${team.total}')">
+                        <button class="btn btn-sm btn-success me-2" onclick="reportes('${team.name}', '${team.alumno}' '${team.seccion}', '${team.fecha}', '${team.Condicion}', '${team.Asignatura}')">
                             <i class="bi bi-book"></i>
-                        <button class="btn btn-sm btn-secondary me-2" onclick="editar1('${team.name}', '${team.seccion}', '${team.fecha}', '${team.mujeres}', '${team.varones}', '${team.total}', ${index})">
+                        <button class="btn btn-sm btn-secondary me-2" onclick="editar1('${team.name}', '${team.alumno}', '${team.seccion}', '${team.fecha}', '${team.Condicion}', '${team.Asignatura}', ${index})">
                             <i class="bi bi-pencil"></i>
                         </button>
                         <button class="btn btn-sm btn-danger" onclick="eliminar(${index})">
@@ -452,62 +477,71 @@
 
         // Función para actualizar el contenido de la tarjeta con el total de asistentes
 
-        // Calcula la suma total de mujeres y varones asistidos en la tabla
-        const calcularSumaTotal = () => {
-            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
-            let totalMujeres = 0;
-            let totalVarones = 0;
-            teams.forEach(team => {
-                totalMujeres += parseInt(team.mujeres);
-                totalVarones += parseInt(team.varones);
-            });
-            return totalMujeres + totalVarones;
-        }
-
-        // Actualiza el primer código HTML con la suma total calculada
+        // Calcula la suma total de alumnos presentes  asistidos en la tabla
         const actualizarTotalAsistencias = () => {
-            let totalAsistencias = calcularSumaTotal();
-            document.getElementById("total-asistencias").innerText = totalAsistencias;
+    const total = totalAsistencias();
+    document.getElementById("presentes").innerText = total;
+}
+
+const totalAsistencias = () => {
+    let teams = JSON.parse(localStorage.getItem("clases")) || [];
+    let total = 0;
+    teams.forEach((team) => {
+        if (team.Condicion === "presente") {
+            total++;
         }
+    });
+    return total;
+}
 
-        // Llama a esta función para actualizar el total de asistencias cuando sea necesario
-        actualizarTotalAsistencias();
+// Llamar a esta función en cualquier punto donde desees actualizar el total de asistencias
+actualizarTotalAsistencias();
 
+// Calcula la suma total de alumnos ausentes asistidos en la tabla
+const actualizarTotalAusentes = () => {
+    const total = totalAusentes();
+    document.getElementById("Ausente").innerText = total;
+}
 
-        const calcularTotalVarones = () => {
-            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
-            let totalVarones = 0;
-            teams.forEach(team => {
-                totalVarones += parseInt(team.varones);
-            });
-            return totalVarones;
+const totalAusentes = () => {
+    let teams = JSON.parse(localStorage.getItem("clases")) || [];
+    let total = 0;
+    teams.forEach((team) => {
+        if (team.Condicion === "ausente") {
+            total++;
         }
+    });
+    return total;
 
-        const actualizarTotalVarones = () => {
-            let totalVarones = calcularTotalVarones();
-            document.getElementById("totalVarones").innerText = totalVarones;
+}
+
+// Llamar a esta función en cualquier punto donde desees actualizar el total de ausentes
+actualizarTotalAusentes();
+
+// Calcula la suma total de alumnos justificados asistidos en la tabla
+const actualizarTotalJustificados = () => {
+    const total = totalJustificados();
+    document.getElementById("justificado").innerText = total;
+}
+
+const totalJustificados = () => {
+    let teams = JSON.parse(localStorage.getItem("clases")) || [];
+    let total = 0;
+    teams.forEach((team) => {
+        if (team.Condicion === "justificado") {
+            total++;
         }
+    });
+    return total;
+}
 
-        actualizarTotalVarones();
+// Llamar a esta función en cualquier punto donde desees actualizar el total de justificados
+actualizarTotalJustificados();
 
 
-        const calcularTotalMujeres = () => {
-            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
-            let totalMujeres = 0;
-            teams.forEach(team => {
-                totalMujeres += parseInt(team.mujeres);
-            });
-            return totalMujeres;
 
-        }
 
-        const actualizarTotalMujeres = () => {
-            let totalMujeres = calcularTotalMujeres();
-            document.getElementById("totalMujeres").innerText = totalMujeres;
-        }
-
-        actualizarTotalMujeres();
-
+    
 
 
         $(document).ready(function () {
@@ -542,35 +576,40 @@
 
 
         const eliminar = (index) => {
-            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
+            let teams = JSON.parse(localStorage.getItem("clases")) || [];
             teams.splice(index, 1);
-            localStorage.setItem("asistencias", JSON.stringify(teams));
+            localStorage.setItem("clases", JSON.stringify(teams));
             cargar();
         }
 
         const Editar = () => {
             var index = document.getElementById("indexE").value;
             let name = document.getElementById("name1").value;
+            let alumno = document.getElementById("alumno1").value;
             let seccion = document.getElementById("seccion1").value;
             let fecha = document.getElementById("fecha1").value;
-            let mujeres = document.getElementById("mujeres1").value;
-            let varones = document.getElementById("varones1").value;
-            let total = document.getElementById("total1").value;
+            let Condicion = document.getElementById("Condicion1").value;
+            let Asignatura = document.getElementById("Asignatura1").value;
 
-            let teams = JSON.parse(localStorage.getItem("asistencias"));
-            teams[index] = { name, seccion, fecha, mujeres, varones, total };
-            localStorage.setItem("asistencias", JSON.stringify(teams));
+        
+
+     
+
+            let teams = JSON.parse(localStorage.getItem("clases"));
+            teams[index] = { name, alumno, seccion, fecha, Condicion, Asignatura };
+            localStorage.setItem("clases", JSON.stringify(teams));
             closeModal2();
             cargar();
 
         }
-        const editar1 = (name, seccion, fecha, mujeres, varones, total, index) => {
+        const editar1 = (name, alumno, seccion, fecha, Condicion, Asignatura, index) => {
             document.getElementById("name1").value = name;
+            document.getElementById("alumno1").value = alumno;
             document.getElementById("seccion1").value = seccion;
             document.getElementById("fecha1").value = fecha;
-            document.getElementById("mujeres1").value = mujeres;
-            document.getElementById("varones1").value = varones;
-            document.getElementById("total1").value = total
+            document.getElementById("Condicion1").value = Condicion;
+            document.getElementById("Asignatura1").value = Asignatura;
+    
 
             document.getElementById("indexE").value = index;
             openModal2();
@@ -628,49 +667,6 @@
         
 
 
-
-        const reportes = () => {
-    let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
-    let tablaReportes = document.getElementById("tablaReportes");
-
-    teams.forEach(team => {
-        let row = tablaReportes.insertRow();
-        row.innerHTML = `
-            <td>${team.name}</td>
-            <td>${team.seccion}</td>
-            <td>${team.fecha}</td>
-            <td>${team.mujeres}</td>
-            <td>${team.varones}</td>
-            <td>${team.total}</td>
-        `;
-    });
-
-    localStorage.setItem("asistencias", JSON.stringify([])); // Vaciar la tabla de asistencias
-
-    window.location.href = "reporte.html"; // Redirigir a la página de reporte
-}
-// Función para comprobar si ha pasado un minuto y eliminar los datos de la tarjeta en ese caso
-function comprobarEliminarDatosTarjeta() {
-    // Obtener la hora de creación de los datos de la tarjeta del almacenamiento local
-    var horaCreacionDatosTarjeta = localStorage.getItem('horaCreacionDatosTarjeta');
-
-    // Si ha pasado un minuto desde la creación de los datos de la tarjeta
-    if (Date.now() - horaCreacionDatosTarjeta >= 1 * 60 * 1000) {
-        // Eliminar los datos de la tarjeta del almacenamiento local
-        localStorage.removeItem('horaCreacionDatosTarjeta');
-        localStorage.removeItem('totalMujeres');
-        localStorage.removeItem('totalVarones');
-        // Aquí deberías incluir el código para actualizar la tarjeta en el DOM o realizar cualquier otra acción necesaria
-        cargar(); // Actualizar la tarjeta después de eliminar los datos
-    }
-}
-
-// Llamar a la función para comprobar y eliminar los datos de la tarjeta cada vez que se carga la página
-window.onload = function() {
-    comprobarEliminarDatosTarjeta(); // Comprobar al cargar la página
-    // Ejecutar la función cada minuto
-    setInterval(comprobarEliminarDatosTarjeta, 60 * 1000); // 60 segundos * 1000 milisegundos
-};
 
 
 
