@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia Escolar</title>
+</head>
+<body>
+    <h1>Asistencia Escolar</h1>
+    <table id="asistenciaTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Sección</th>
+                <!-- Agrega más columnas según sea necesario -->
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se generarán las filas de la tabla con los datos de los asistentes -->
+        </tbody>
+    </table>
+
+    <script>
+        // Función para filtrar por sección y generar reporte
+        function generarReporte(seccion) {
+            // Filtrar los asistentes por sección
+            let asistentes = []; // Aquí debes obtener los datos de los asistentes de tu aplicación
+            let asistentesPorSeccion = asistentes.filter(asistente => asistente.seccion === seccion);
+
+            // Guardar los datos del reporte en el almacenamiento local
+            localStorage.setItem("reporteAsistencia", JSON.stringify(asistentesPorSeccion));
+
+            // Redirigir a la página de reporte
+            window.location.href = "reporte.html";
+        }
+    </script>
+</body>
+</html>

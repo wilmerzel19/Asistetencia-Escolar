@@ -86,8 +86,8 @@
 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="bi bi-person-square"></i> Account
+                            <a class="nav-link" onclick="notas()">
+                                <i class="bi bi-person-square"></i> %Notas
                             </a>
                         </li>
                         <li class="nav-item">
@@ -131,9 +131,15 @@
                                                 <label for="name">Maestro:</label>
                                                 <input type="text" id="name" name="name"
                                                     placeholder="Nombre del maestro" required><br><br>
-                                                <label for="seccion">Seccion:</label>
-                                                <input type="select" id="seccion" name="seccion" placeholder="Seccion"
-                                                    required><br><br>
+                                                    <label for="seccion">Seleccionar Sección:</label>
+                                                    <select id="seccion" onchange="filtrarPorSeccion()">
+                                                        <option value="todas">Todas las secciones</option>
+                                                        <option value="A">Sección A</option>
+                                                        <option value="B">Sección B</option>
+                                                        <option value="C">Sección C</option>
+                                                        <option value="D">Sección D</option>
+                                                    </select>
+                                                    
                                                 <label for="fecha">Fecha:</label>
                                                 <input type="date" id="fecha" name="fecha" required><br><br>
                                                 <label for="mujeres">Mujeres:</label>
@@ -284,6 +290,8 @@
                     <div class="card shadow border-0 mb-7">
                         <div class="card-header">
                             <h5 class="mb-0">Asistencia Estudiantil</h5>
+                            <input type="button" value="Generar Reporte" class="btn solid" onclick="generarReporte()" />
+
 
 
                         </div>
@@ -400,7 +408,7 @@
                     <td>${team.varones}</td>
                     <td>${team.total}</td>
                     <td class="text-end">
-                        <button class="btn btn-sm btn-success me-2" onclick="reportes('${team.name}', '${team.seccion}', '${team.fecha}', '${team.mujeres}', '${team.varones}', '${team.total}')">
+                        <button class="btn btn-sm btn-success me-2" onclick="openModal()">
                             <i class="bi bi-book"></i>
                         <button class="btn btn-sm btn-secondary me-2" onclick="editar1('${team.name}', '${team.seccion}', '${team.fecha}', '${team.mujeres}', '${team.varones}', '${team.total}', ${index})">
                             <i class="bi bi-pencil"></i>
@@ -590,27 +598,38 @@
         
 
 
-
-        const reportes = () => {
+const reportes = () => {
     let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
+    let seccionSeleccionada = document.getElementById("seccion").value; // Obtener la sección seleccionada
+    
+    // Filtrar los datos de asistencia por la sección seleccionada
+    let asistenciasPorSeccion = teams.filter(team => team.seccion === seccionSeleccionada);
+    
+    // Generar el reporte con los datos filtrados
     let tablaReportes = document.getElementById("tablaReportes");
-
-    teams.forEach(team => {
-        let row = tablaReportes.insertRow();
-        row.innerHTML = `
-            <td>${team.name}</td>
-            <td>${team.seccion}</td>
-            <td>${team.fecha}</td>
-            <td>${team.mujeres}</td>
-            <td>${team.varones}</td>
-            <td>${team.total}</td>
+    let html = "";
+    asistenciasPorSeccion.forEach(team => {
+        html += `
+            <tr>
+                <td>${team.name}</td>
+                <td>${team.seccion}</td>
+                <td>${team.fecha}</td>
+                <td>${team.mujeres}</td>
+                <td>${team.varones}</td>
+                <td>${team.total}</td>
+            </tr>
         `;
     });
+    
+    tablaReportes.innerHTML = html; // Insertar el reporte en la tabla correspondiente
+    
+    // Limpiar los datos de asistencia después de generar el reporte
+    localStorage.setItem("asistencias", JSON.stringify([]));
+    
+    // Redirigir a la página de reporte
+    window.location.href = "reporte.html";
+};
 
-    localStorage.setItem("asistencias", JSON.stringify([])); // Vaciar la tabla de asistencias
-
-    window.location.href = "reporte.html"; // Redirigir a la página de reporte
-}
 // Función para comprobar si ha pasado un minuto y eliminar los datos de la tarjeta en ese caso
 function comprobarEliminarDatosTarjeta() {
     // Obtener la hora de creación de los datos de la tarjeta del almacenamiento local
@@ -634,7 +653,47 @@ window.onload = function() {
     setInterval(comprobarEliminarDatosTarjeta, 60 * 1000); // 60 segundos * 1000 milisegundos
 };
 
+// Función para calcular y actualizar el total cuando se ingresan las cantidades de mujeres y varones
+const calcularTotal = () => {
+    let mujeres = parseInt(document.getElementById("mujeres").value) || 0; // Obtener la cantidad de mujeres, si no se ingresa nada se asume 0
+    let varones = parseInt(document.getElementById("varones").value) || 0; // Obtener la cantidad de varones, si no se ingresa nada se asume 0
+    let total = mujeres + varones; // Calcular el total sumando mujeres y varones
+    document.getElementById("total").value = total; // Actualizar el campo de total con el resultado
+};
 
+// Agregar evento oninput a los campos de mujeres y varones para que se llame a la función calcularTotal
+document.getElementById("mujeres").addEventListener("input", calcularTotal);
+document.getElementById("varones").addEventListener("input", calcularTotal);
+
+
+
+
+function generarReporte() {
+            // Obtener la sección seleccionada
+            const seccion = document.getElementById('seccion').value;
+            
+            // Aquí debes obtener los datos de los asistentes de esa sección
+            const asistentes = obtenerAsistentesPorSeccion(seccion); // Esta función debe ser implementada
+            
+            // Almacenar los datos en el almacenamiento local
+            localStorage.setItem('reporteAsistencia', JSON.stringify(asistentes));
+            
+            // Redirigir a la página de reporte
+            window.location.href = 'reporte.html';
+        }
+        
+        // Esta función debe ser implementada para obtener los asistentes de una sección específica
+        function obtenerAsistentesPorSeccion(seccion) {
+            // Aquí debes escribir el código para obtener los asistentes de la sección seleccionada
+            // Puedes obtener los datos de una base de datos, un archivo JSON, o de cualquier otra fuente de datos
+            // Por ahora, puedes simplemente retornar una lista vacía para probar la funcionalidad
+            return [];
+        }
+
+
+        const notas = () => {
+            window.location.href = "notas.html";
+        }
 
 
     </script>
