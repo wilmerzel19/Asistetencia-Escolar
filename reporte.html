@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="home.css">
-    <title>Panel-A.E</title>
+
+    <link rel="stylesheet" href="reporte.css">
+    <title>Reporte</title>
 </head>
 
 <body>
@@ -66,29 +69,30 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="home.html">
                                 <i class="bi bi-house"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/reporte.html">
+                            <a class="nav-link" href="reporte.html">
                                 <i class="bi bi-bar-chart"></i> Reportes
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onclick="calendario()">
+                            <a class="nav-link" href="calendario.html">
                                 <i class="bi bi-bookmarks"></i> Calendario
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onclick="users()" <i class="bi bi-people"></i> Asistencia Profesores
+                            <a class="nav-link" href="asistencia-profesor.html">
+                                <i class="bi bi-people"></i> Asistencia Profesores
                             </a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" onclick="notas()">
+                            <a class="nav-link" href="notas.html">
                                 <i class="bi bi-person-square"></i> %Notas
                             </a>
                         </li>
@@ -108,12 +112,12 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-header-title">Reporte de Asistencia</h4>
-                  
+                    <h4 class="card-header-title text-center ">Reporte de Asistencia</h4>
+
                 </div>
                 <button class="btn-primary py-3" onclick="printContent()">Imprimir</button>
                 <br>
-                <button class="btn-primary py-2" onclick="exportToExcel()">Exportar a Excel</button>
+                <button class="btn-success py-2" onclick="exportToExcel()">Exportar a Excel</button>
 
                 <div class="card-body">
                     <div class="row">
@@ -121,11 +125,11 @@
                             <div class="form-group-sm">
                                 <label for="seccion">Sección</label>
                                 <select class="form-select" id="seccion">
-                                    <option value="1A">1A</option>
-                                    <option value="1B">1B</option>
-                                    <option value="1C">1C</option>
-                                    <option value="1D">1D</option>
-                                    <option value="1E">1E</option>
+                                    <option value="1A">A</option>
+                                    <option value="1B">B</option>
+                                    <option value="1C">C</option>
+                                    <option value="1D">D</option>
+                                    <option value="1E">E</option>
                                 </select>
                             </div>
                         </div>
@@ -152,10 +156,15 @@
 
                 <button class="btn btn-primary" onclick="filtrar()">Generar Reporte</button>
 
-                <div id="contentToPrint">
 
-                    <div class="table-responsive">
+
+                <div class="table-responsive">
+                    <div id="contentToPrint">
+
                         <table class="table table-hover table-nowrap" id="myTable">
+
+
+
                             <thead class="thead-light">
 
 
@@ -218,6 +227,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
 
 
 
@@ -297,6 +311,7 @@
                     "paginate": {
                         "previous": "Anterior",
                         "next": "Siguiente"
+
                     }
 
 
@@ -339,26 +354,50 @@
         const users = () => {
             window.location.href = "asistencia-profesor.html";
         }
+
         cargar();
-
-
         function printContent() {
+            // Agregar el log al inicio del contenido a imprimir
+            const logContent = "<p>Este es el log de la impresión. Fecha: " + new Date().toLocaleString() + "</p>";
+            const contentToPrint = document.getElementById("contentToPrint");
+            contentToPrint.insertAdjacentHTML('beforebegin', logContent);
+
+            // Llamar a la función printJS() para imprimir el contenido
             printJS({
                 printable: 'contentToPrint',
                 type: 'html',
-                header: 'Encabezado personalizado', // Opcional
-                footer: 'Pie de página personalizado' // Opcional
+                header: 'Colegio Yelba Maria Antunez', // Opcional
+
+                headerStyle: 'font-size: 50px; text-align: center;', // Opcional
+            
+                footer: 'Reporte de Asistencia', // Opcional
+                style: '.table { border-collapse: collapse; width: 100%; }' +
+                    '.table, th, td { border: 1px solid black; }' +
+                    'th, td { padding: 8px; text-align: left; }' +
+                    'th { background-color: #f2f2f2; }' +
+                    'tr:nth-child(even) { background-color: #f2f2f2; }' +
+                    'tr:nth-child(odd) { background-color: #ffffff; }' +
+                    'th { background-color: #4CAF50; color: white; }' +
+                    'h1 { text-align: center; }' +
+                    'h2 { text-align: center; }' +
+                    'h3 { text-align: center; }' +
+                    'h4 { text-align: center; }' +
+                    'h5 { text-align: center; }' +
+                    'h6 { text-align: center; }' +
+                    'p { text-align: center; }' +
+                    'img { display: block; margin-left: auto; margin-right: auto; }'
+
             });
         }
 
+     
 
 
-
-    function exportToExcel() {
-        const table = document.getElementById("myTable");
-        const wb = XLSX.utils.table_to_book(table, {sheet: "Sheet JS"});
-        XLSX.writeFile(wb, "data.xlsx");
-    }
+        function exportToExcel() {
+            const table = document.getElementById("myTable");
+            const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet JS" });
+            XLSX.writeFile(wb, "data.xlsx");
+        }
 
 
     </script>
