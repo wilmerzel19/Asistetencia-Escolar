@@ -7,3 +7,9 @@ body {
   .container {
     background: #E8F0F9;
   }
+
+
+  /* Agregar estilo para las filas reprobadas */
+.reprobado {
+  background-color: #e29696; /* Color de fondo rojo claro */
+}

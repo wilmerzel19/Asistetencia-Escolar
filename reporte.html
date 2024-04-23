@@ -122,34 +122,30 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group-sm">
-                                <label for="seccion">Sección</label>
-                                <select class="form-select" id="seccion">
-                                    <option value="1A">A</option>
-                                    <option value="1B">B</option>
-                                    <option value="1C">C</option>
-                                    <option value="1D">D</option>
-                                    <option value="1E">E</option>
-                                </select>
-                            </div>
+                            <label for="mes">Mes</label>
+                            <select class="form-select" id="mes">
+                                <option value="enero">Enero</option>
+                                <option value="febrero">Febrero</option>
+                                <option value="marzo">Marzo</option>
+                                <option value="abril">Abril</option>
+                                <option value="mayo">Mayo</option>
+                                <option value="junio">Junio</option>
+                                <option value="julio">Julio</option>
+                                <option value="agosto">Agosto</option>
+                                <option value="septiembre">Septiembre</option>
+                                <option value="octubre">Octubre</option>
+                                <option value="noviembre">Noviembre</option>
+                                <!-- Opciones para otros meses -->
+                            </select>
+                            
+                            <label for="semana">Semana</label>
+                            <input type="number" class="form-control" id="semana">
+                            
+                            <label for="dia">Día</label>
+                            <input type="date" class="form-control" id="dia">
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group-sm">
-                                <label for="fecha">Fecha</label>
-                                <input type="date" class="form-control" id="fecha">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group-sm">
-                                <label for="mujeres">Nombre del Maestro</label>
-                                <input type="text" class="form-control" id="nombre">
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+                            
 
 
 
@@ -259,44 +255,55 @@
         }
 
         const filtrar = () => {
-            let seccion = document.getElementById("seccion").value;
-            let fecha = document.getElementById("fecha").value;
-            let nombre = document.getElementById("nombre").value;
-            let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
-            let tabla = document.getElementById("tablaReportes");
-            var html = "";
-            //buscador en objetos\
-            //filtrar por cada campo 1 a la ves hacer cuatro filtraciones consecutivas
+    let mes = document.getElementById("mes").value;
+    let semana = document.getElementById("semana").value;
+    let dia = document.getElementById("dia").value;
+    let teams = JSON.parse(localStorage.getItem("asistencias")) || [];
+    let tabla = document.getElementById("tablaReportes");
+    let html = "";
+    
+    // Filtrar por mes
+    let filtrado = teams.filter((team) => {
+        // Compara los primeros 7 caracteres de team.fecha con el mes seleccionado
+        return team.fecha.slice(0, 7) === mes;
+    });
 
-            filtrado = teams.filter((team) => {
-                //team.name.includes(nombre) && team.seccion.includes(seccion) && team.fecha.includes(fecha)
-                if (team.name.includes(nombre) && team.seccion.includes(seccion) && team.fecha.includes(fecha)) {
-                    return team;
-                }
-                else {
-                    return teams;
-                }
-            });
+    // Filtrar por semana
+    if (semana !== "") {
+        filtrado = filtrado.filter((team) => {
+            return team.semana === semana;
+        });
+    }
 
-            //convinar los resultados
-            filtrado.map((team, index) => {
-                html += `
-                <tr>
-                    <td>${team.name}</td>
-                    <td>${team.seccion}</td>
-                    <td>${team.fecha}</td>
-                    <td>${team.mujeres}</td>
-                    <td>${team.varones}</td>
-                    <td>${team.total}</td>
-                </tr>
-            `;
-            });
-            tabla.innerHTML = "";
-            tabla.innerHTML = html;
-            $('#myTable').DataTable.destroy();
-            $('#myTable').DataTable();
+    // Filtrar por día
+    if (dia !== "") {
+        filtrado = filtrado.filter((team) => {
+            return team.fecha === dia;
+        });
+    }
 
-        }
+    // Generar HTML para la tabla
+    filtrado.forEach((team) => {
+        html += `
+            <tr>
+                <td>${team.name}</td>
+                <td>${team.seccion}</td>
+                <td>${team.fecha}</td>
+                <td>${team.mujeres}</td>
+                <td>${team.varones}</td>
+                <td>${team.total}</td>
+            </tr>
+        `;
+    });
+    
+    // Actualizar la tabla con los resultados filtrados
+    tabla.innerHTML = html;
+
+    // Reconfigurar la tabla DataTable
+    $('#myTable').DataTable().destroy();
+    $('#myTable').DataTable();
+}
+
 
         $(document).ready(function () {
             $('#myTable').DataTable({
@@ -368,7 +375,7 @@
                 type: 'html',
                 header: 'Colegio Yelba Maria Antunez', // Opcional
 
-                headerStyle: 'font-size: 50px; text-align: center;', // Opcional
+                headerStyle: 'font-size: 50px; text-align: center background-color: blue;', // Opcional
             
                 footer: 'Reporte de Asistencia', // Opcional
                 style: '.table { border-collapse: collapse; width: 100%; }' +
