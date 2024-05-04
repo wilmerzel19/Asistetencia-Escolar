@@ -58,12 +58,10 @@ function cargarNotasGuardadas() {
     const tabla = document.getElementById('addtabla');
     notasGuardadas.forEach(nota => {
         const fila = document.createElement('tr');
-        fila.innerHTML = `<td>${nota.nombre}</td><td>${nota.nota1}</td><td>${nota.nota2}</td><td>${nota.nota3}</td><td>${nota.nota4}</td><td>${nota.promedio}</td><td>${nota.observacion}</td>`;
+        fila.innerHTML = `<td>${nota.nombre}</td><td>${nota.nota1}</td><td>${nota.nota2}</td><td>${nota.nota3}</td><td>${nota.nota4}</td><td>${nota.promedio}</td><td>${nota.observacion}</td><td><button class="btn btn-sm btn-warning" onclick="editarNota(this)">Editar</button></td><td><button class="btn btn-sm btn-danger" onclick="eliminarNota(this)">Eliminar</button></td>`;
         tabla.appendChild(fila);
     });
-} 
- // Agregar los botones de editar y eliminar a la fila
-      fila.innerHTML = `<td>${nom}</td><td>${not1}</td><td>${not2}</td><td>${not3}</td><td>${not4}</td><td>${prom.toFixed()}</td><td>${obs}</td><td><button class="btn btn-sm btn-warning" onclick="editarNota(this)">Editar</button></td><td><button class="btn btn-sm btn-danger" onclick="eliminarNota(this)">Eliminar</button></td>`;
+}
 
       function editarNota(btn) {
         let fila = btn.parentNode.parentNode;
@@ -108,4 +106,6 @@ function cargarNotasGuardadas() {
     
         localStorage.setItem('notas', JSON.stringify(notasGuardadas));
     }
+
+
 
