@@ -190,7 +190,7 @@
 
 
 
-                                <!-- Aquí se insertarán los datos del reporte -->
+                             
 
 
                             </tbody>
@@ -203,7 +203,7 @@
 
 
 
-                    <!-- crear pagination -->
+ 
 
 
 
@@ -365,15 +365,20 @@
         cargar();
         function printContent() {
             // Agregar el log al inicio del contenido a imprimir
+            $('#myTable').DataTable().destroy();
             const logContent = "<p>Este es el log de la impresión. Fecha: " + new Date().toLocaleString() + "</p>";
             const contentToPrint = document.getElementById("contentToPrint");
             contentToPrint.insertAdjacentHTML('beforebegin', logContent);
-
+            var header1 =  '<div style="text-align: center; margin-bottom: 10px;">' +
+                '<img src="/img/logo1.png" alt="Logo" style="width: 100px; margin-bottom: 10px;">' +
+                '<h1>Reporte de Asistencia</h1>' +
+                
+                '</div>';
             // Llamar a la función printJS() para imprimir el contenido
             printJS({
                 printable: 'contentToPrint',
                 type: 'html',
-                header: 'Colegio Yelba Maria Antunez', // Opcional
+                header: header1,
 
                 headerStyle: 'font-size: 50px; text-align: center background-color: blue;', // Opcional
             
