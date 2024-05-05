@@ -369,13 +369,8 @@
             const logContent = "<p>Este es el log de la impresión. Fecha: " + new Date().toLocaleString() + "</p>";
             const contentToPrint = document.getElementById("contentToPrint");
             contentToPrint.insertAdjacentHTML('beforebegin', logContent);
-            var header =  '<div style="text-align: center;">' +
-                '<img src="/img/logo1.png" alt="Logo" style="width: 100px; height: 100px;">' +
-                '<h1>Reporte de Asistencia</h1>' +
-           
+            var header = "<h1>Reporte de Asistencia</h1>";
 
-                
-                '</div>';
 
 
 
@@ -385,7 +380,7 @@
             printJS({
                 printable: 'contentToPrint',
                 type: 'html',
-                header: header,
+                header: header, // Opcional
 
                 headerStyle: 'font-size: 50px; text-align: center background-color: blue;', // Opcional
             
